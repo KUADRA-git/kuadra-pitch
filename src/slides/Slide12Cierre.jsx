@@ -16,10 +16,7 @@ export default function Slide12Cierre() {
       </div>
 
       {/* Message */}
-      <p style={{ position: 'relative', zIndex: 10, fontSize: '36px', color: 'rgba(255,255,255,0.5)', fontWeight: 300, textAlign: 'center', lineHeight: 1.6, maxWidth: '1000px', marginBottom: '48px' }}>
-        Potenciemos la experiencia de los clientes,<br />
-        sumemos tiempo operativo a los restaurantes.
-      </p>
+
 
       {/* Punchline */}
       <h1 style={{ position: 'relative', zIndex: 10, fontSize: '72px', fontWeight: 900, color: '#FFFFFF', textAlign: 'center', lineHeight: 1.15, maxWidth: '1200px', letterSpacing: '-2px' }}>
