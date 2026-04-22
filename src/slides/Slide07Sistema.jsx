@@ -3,14 +3,13 @@ import SectionLabel from '../components/SectionLabel';
 
 /**
  * Slide 7: SISTEMA — Video demo with synced step highlighting
- * 
- * The video (~30s loop) shows the app flow. Steps auto-highlight
+ * * The video (~30s loop) shows the app flow. Steps auto-highlight
  * based on video currentTime. Approximate sync points:
- *   0-6s   → Escaneo QR (opening, scanning)
- *   6-12s  → Pedir Comida (menu, ordering)
- *   12-18s → Verificación (order confirmation)
- *   18-24s → Pago (payment flow)
- *   24-30s → QR Comprobación (receipt QR)
+ * 0-6s   → Escaneo QR (opening, scanning)
+ * 6-12s  → Pedir Comida (menu, ordering)
+ * 12-18s → Verificación (order confirmation)
+ * 18-24s → Pago (payment flow)
+ * 24-30s → QR Comprobación (receipt QR)
  */
 const STEPS = [
   { label: 'Escaneo QR', startSec: 0 },
@@ -48,7 +47,7 @@ export default function Slide07Sistema() {
         <SectionLabel text="El Sistema" color="#FF6435" />
 
         {/* Steps with active highlighting */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '48px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '40px' }}>
           {STEPS.map(({ label }, i) => {
             const isActive = i === activeStep;
             return (
@@ -67,11 +66,12 @@ export default function Slide07Sistema() {
                   flexShrink: 0, transition: 'all 0.4s ease',
                   boxShadow: isActive ? '0 4px 20px rgba(255,100,53,0.4)' : 'none'
                 }}>
+                  {/* Se eliminó el padStart para mostrar solo 1, 2, 3... */}
                   <span style={{
-                    fontSize: '16px', fontWeight: 900,
+                    fontSize: '18px', fontWeight: 900,
                     color: isActive ? '#FFFFFF' : 'rgba(255,255,255,0.25)',
                     transition: 'color 0.4s ease'
-                  }}>{String(i + 1).padStart(2, '0')}</span>
+                  }}>{i + 1}</span>
                 </div>
                 <span style={{
                   fontSize: '24px',
@@ -91,14 +91,16 @@ export default function Slide07Sistema() {
           })}
         </div>
 
-        {/* QR 3D */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '20px', paddingTop: '32px', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-          <div style={{ width: '120px', flexShrink: 0, filter: 'drop-shadow(0 12px 32px rgba(0,0,0,0.8))' }}>
-            <img src="/qr actual final modelo 3d mockup.png" alt="QR 3D" style={{ width: '100%', display: 'block' }} />
+        {/* QR 3D - Ahora con mayor tamaño, glow de fondo y sombras más profundas */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '28px', paddingTop: '32px', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+          <div style={{ position: 'relative', width: '220px', flexShrink: 0 }}>
+            {/* Glow sutil detrás del QR */}
+            <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '140px', height: '140px', background: '#FF6435', borderRadius: '50%', filter: 'blur(50px)', opacity: 0.15 }} />
+            <img src="/qr actual final modelo 3d mockup.png" alt="QR 3D" style={{ width: '100%', display: 'block', position: 'relative', zIndex: 2, filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.9))' }} />
           </div>
           <div>
-            <span style={{ display: 'block', fontSize: '13px', color: 'rgba(255,255,255,0.3)', letterSpacing: '3px', textTransform: 'uppercase', fontWeight: 600, marginBottom: '6px' }}>Punto de Acceso</span>
-            <p style={{ fontSize: '18px', color: 'rgba(255,255,255,0.55)', lineHeight: 1.4 }}>
+            <span style={{ display: 'block', fontSize: '14px', color: 'rgba(255,255,255,0.3)', letterSpacing: '4px', textTransform: 'uppercase', fontWeight: 600, marginBottom: '8px' }}>Punto de Acceso</span>
+            <p style={{ fontSize: '20px', color: 'rgba(255,255,255,0.55)', lineHeight: 1.45 }}>
               Un escaneo conecta al cliente con su <strong style={{ color: '#FF6435' }}>Mesa Virtual</strong>
             </p>
           </div>
