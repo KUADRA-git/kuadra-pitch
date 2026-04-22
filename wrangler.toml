@@ -1,11 +1,7 @@
 #:schema node_modules/wrangler/config-schema.json
 
-# Nombre de tu proyecto en Cloudflare
-name = "kuadra-pitch-deck"
+# ¡AQUÍ ESTABA EL DETALLE! Cambiado a "kuadra-pitch"
+name = "kuadra-pitch"
 
-# Fecha de compatibilidad (puedes dejar la fecha actual)
 compatibility_date = "2024-03-20"
-
-# MUY IMPORTANTE: Vite por defecto exporta el build a la carpeta "dist". 
-# Esto le dice a Cloudflare qué carpeta debe subir a sus servidores.
 pages_build_output_dir = "dist"
