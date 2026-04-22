@@ -24,7 +24,7 @@ export default function Slide04QuienesSomos() {
           <img
             src="/kuadra_logotipo_fondo_negro.png"
             alt="KUADRA"
-            style={{ height: '140px', display: 'block' }}
+            style={{ height: '190px', display: 'block' }}
             onError={e => { e.target.style.display = 'none'; }}
           />
         </div>

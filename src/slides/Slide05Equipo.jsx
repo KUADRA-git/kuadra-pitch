@@ -1,25 +1,27 @@
 import React from 'react';
-import MaleSilhouetteSVG from '../components/MaleSilhouette';
 
 export default function Slide05Equipo() {
   const founders = [
     {
       name: 'Enrique Martineau',
-      role: 'Co-Fundador & CEO',
+      role: 'Founder & COO ',
       study: 'Economía Empresarial &\nMatemáticas Industriales',
-      accent: '#FF6435'
+      accent: '#FF6435',
+      image: '/enrique.jpg'
     },
     {
       name: 'Giovanni Zarbo',
-      role: 'Co-Fundador & CTO',
+      role: 'Founder & CTO',
       study: 'Ingeniería en Sistemas',
-      accent: '#1A1A1A'
+      accent: '#FF6435',
+      image: '/giovanni.jpg'
     },
     {
       name: 'Diego Requena',
-      role: 'Co-Fundador & CFO',
+      role: 'Founder  & CFO',
       study: 'Economía Empresarial &\nContaduría Pública',
-      accent: '#A2003C'
+      accent: '#FF6435',
+      image: '/diego.jpg'
     }
   ];
 
@@ -35,11 +37,9 @@ export default function Slide05Equipo() {
         {/* Cabecera impactante */}
         <div style={{ textAlign: 'center', marginBottom: '80px' }}>
           <h2 style={{ fontSize: '86px', fontWeight: 900, letterSpacing: '-3px', color: '#111111' }}>
-            Conoce al <span style={{ color: '#FF6435' }}>Equipo.</span>
+            Conoce al <span style={{ color: '#FF6435' }}>Team</span>
           </h2>
-          <p style={{ fontSize: '26px', color: '#666666', fontWeight: 300, marginTop: '16px', maxWidth: '900px', margin: '16px auto 0' }}>
-            La infraestructura de la confianza construida por una combinación precisa de visión financiera e ingeniería de software de alto nivel.
-          </p>
+
         </div>
 
         {/* Grid de tarjetas con tamaño uniforme */}
@@ -49,7 +49,7 @@ export default function Slide05Equipo() {
           gap: '48px',
           alignItems: 'stretch' // Garantiza que todas las tarjetas tengan la misma altura
         }}>
-          {founders.map(({ name, role, study, accent }) => (
+          {founders.map(({ name, role, study, accent, image }) => (
             <div key={name} style={{
               background: '#FFFFFF',
               borderRadius: '40px',
@@ -65,7 +65,7 @@ export default function Slide05Equipo() {
               minHeight: '620px' // Altura fija para asegurar uniformidad visual
             }}>
 
-              {/* Círculo de Avatar con resplandor suave */}
+              {/* Círculo de Avatar con resplandor suave y FOTOGRAFÍA */}
               <div style={{
                 width: '160px',
                 height: '160px',
@@ -76,11 +76,21 @@ export default function Slide05Equipo() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 marginBottom: '32px',
-                padding: '16px',
+                padding: '6px', // Espaciado sutil para crear un marco alrededor de la foto
                 overflow: 'hidden',
                 boxShadow: `0 16px 48px ${accent}25`
               }}>
-                <MaleSilhouetteSVG color={accent === '#1A1A1A' ? '#444' : accent} />
+                <img
+                  src={image}
+                  alt={`Foto de ${name}`}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    borderRadius: '50%'
+                  }}
+                  onError={(e) => { e.target.style.display = 'none'; }}
+                />
               </div>
 
               {/* Badge de Rol corporativo */}

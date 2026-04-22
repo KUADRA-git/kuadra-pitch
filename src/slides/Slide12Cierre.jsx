@@ -12,7 +12,7 @@ export default function Slide12Cierre() {
 
       {/* Isotipo */}
       <div style={{ position: 'relative', zIndex: 10, marginBottom: '56px' }}>
-        <img src="/kuadra_isotipo_negativo.png" alt="K" style={{ width: '180px', display: 'block', filter: 'drop-shadow(0 0 60px rgba(255,100,53,0.4))' }} onError={e => { e.target.style.display = 'none'; }} />
+        <img src="/kuadra_logotipo_negativo.png" alt="K" style={{ width: '900px', display: 'block', filter: 'drop-shadow(0 0 60px rgba(255,100,53,0.4))' }} onError={e => { e.target.style.display = 'none'; }} />
       </div>
 
       {/* Message */}
