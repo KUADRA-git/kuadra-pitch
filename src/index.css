@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+/* ── Kuadra Design Tokens ─────────────────────────────── */
+:root {
+  --k-naranja: #FF6435;
+  --k-rojo: #A2003C;
+  --k-negro: #0C0C0C;
+  --k-blanco: #FFFFFF;
+  --k-gris-100: #F5F5F7;
+  --k-gris-200: #E8E8E8;
+  --k-gris-500: #666666;
+  --k-gris-700: #333333;
+  --k-glass-bg: rgba(10, 10, 10, 0.78);
+  --k-glass-border: rgba(255, 255, 255, 0.1);
+  --k-glass-blur: 24px;
+}
+
+/* ── Reset global ─────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--k-negro);
+  font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar oscura ─────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #111; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+
+/* ══════════════════════════════════════════════════════
+   ANIMACIONES DE TRANSICIÓN
+   ══════════════════════════════════════════════════════ */
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.08; }
+  50%      { opacity: 0.15; }
+}
+
+@keyframes kMarkerSlide {
+  from { transform: translateX(var(--k-marker-from, 0px)); }
+  to   { transform: translateX(var(--k-marker-to, 0px)); }
+}
+
+.slide-enter {
+  animation: slideIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.fade-enter {
+  animation: fadeIn 0.4s ease both;
+}
+
+.glow-pulse {
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+/* ── Glass Morphism Utility ───────────────────────────── */
+.glass {
+  background: var(--k-glass-bg);
+  backdrop-filter: blur(var(--k-glass-blur));
+  -webkit-backdrop-filter: blur(var(--k-glass-blur));
+  border: 1px solid var(--k-glass-border);
+}
+
+/* ── Navigation Bar ───────────────────────────────────── */
+.nav-bar {
+  background: rgba(8, 8, 8, 0.82);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* K-marker progress track */
+.k-progress-track {
+  position: relative;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 100px;
+  overflow: visible;
+}
+
+.k-progress-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--k-naranja), var(--k-rojo));
+  border-radius: 100px;
+  transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.k-marker {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: left 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: drop-shadow(0 0 12px rgba(255, 100, 53, 0.6));
+  z-index: 10;
+}
+
+/* ── Nav buttons ──────────────────────────────────────── */
+.nav-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 12px;
+  transition: background 0.2s ease, color 0.2s ease;
+  color: rgba(255, 255, 255, 0.5);
+}
+.nav-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.9);
+}
+.nav-btn:disabled {
+  color: rgba(255, 255, 255, 0.12);
+  cursor: default;
+}
+
+/* ══════════════════════════════════════════════════════
+   CONFIGURACIÓN DE IMPRESIÓN / EXPORTAR PDF
+   ══════════════════════════════════════════════════════ */
+@media print {
+  @page {
+    size: 1920px 1080px;
+    margin: 0;
+  }
+
+  html, body, #root {
+    width: 1920px !important;
+    height: auto !important;
+    overflow: visible !important;
+    background: #FFFFFF !important;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-container {
+    display: block !important;
+    width: 1920px !important;
+  }
+
+  .print-slide {
+    width: 1920px !important;
+    height: 1080px !important;
+    page-break-after: always !important;
+    overflow: hidden !important;
+    position: relative !important;
+    transform: none !important;
+  }
+
+  /* ── Slide 7: ocultar video, mostrar tarjeta fallback ── */
+  .product-video {
+    display: none !important;
+  }
+
+  .video-print-fallback {
+    display: flex !important;
+  }
+}
